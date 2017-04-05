@@ -13,7 +13,7 @@ namespace MUG_App
         {
             InitializeComponent();
 
-            MainPage = new MUG_App.MainPage();
+            MainPage = new MUG_App.Main.MainPage();
         }
 
         protected override void OnStart()
