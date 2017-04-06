@@ -4,7 +4,16 @@
              x:Class="MUG_App.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
 
-	</Application.Resources>
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#e51937"/>
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+            <!-- Styles -->
+
+        </ResourceDictionary>
+
+    </Application.Resources>
 </Application>

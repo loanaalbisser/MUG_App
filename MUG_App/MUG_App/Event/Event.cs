@@ -1,11 +1,15 @@
-﻿namespace MUG_App.Event
+﻿using System.ComponentModel;
+
+namespace MUG_App.Event
 {
-    public class Event
+    public partial class EventPageViewModel : INotifyPropertyChanged
     {
-        public string Name { get; set; }
+        public class Event
+        {
+            public string Title { get; set; }
+            public string Description { get; set; }
 
-        public string Status { get; set; }
-
-        public string Description { get; set; }
+            public override string ToString() => Title;
+        }
     }
 }

@@ -1,35 +1,51 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Xamarin.Forms;
+using System.Threading.Tasks;
+using MUG_App.RestService;
 
 namespace MUG_App.Group
 {
-    class GroupPageViewModel : INotifyPropertyChanged
+    public class GroupPageViewModel : INotifyPropertyChanged
     {
+        private string _groupName;
+        private string _description;
+        private readonly IRestService _restService;
 
-        public GroupPageViewModel()
+        public GroupPageViewModel(IRestService restService)
         {
-            IncreaseCountCommand = new Command(IncreaseCount);
+            _restService = restService;
         }
 
-        int count;
-
-        string countDisplay = "You clicked 0 times.";
-        public string CountDisplay
+        public async Task LoadGroupData()
         {
-            get { return countDisplay; }
-            set { countDisplay = value; OnPropertyChanged(); }
+            const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz";
+            var items = await _restService.GetData(restUrl);
+            Name = items["name"].ToString();
+            Description = items["description"].ToString();
         }
 
-        public ICommand IncreaseCountCommand { get; }
+        public string Name
+        {
+            get { return _groupName; }
+            set
+            {
+                _groupName = value;
+                OnPropertyChanged();
+            }
+        }
 
-        void IncreaseCount() =>
-            CountDisplay = $"You clicked {++count} times";
-
-
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
+        private void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     }

@@ -34,24 +34,15 @@ namespace MUG_App.Main
                 return;
             if (menuItem.Id == 0)
             {
-                Detail = new NavigationPage(new GroupPage())
-                {
-                    BarBackgroundColor = Color.FromHex("#e51937")
-                };
+                Detail = new NavigationPage(new GroupPage());
             }
             else if (menuItem.Id == 1)
             {
-                Detail = new NavigationPage(new OrganizerPage())
-                {
-                    BarBackgroundColor = Color.FromHex("#e51937")
-                };
+                Detail = new NavigationPage(new OrganizerPage());
             }
             else if (menuItem.Id == 2)
             {
-                Detail = new NavigationPage(new EventPage())
-                {
-                    BarBackgroundColor = Color.FromHex("#e51937")
-                };
+                Detail = new NavigationPage(new EventPage());
             }
 
         }

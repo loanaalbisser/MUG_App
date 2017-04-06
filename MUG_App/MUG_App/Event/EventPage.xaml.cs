@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace MUG_App.Event
@@ -8,23 +6,32 @@ namespace MUG_App.Event
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventPage : ContentPage
     {
+        private readonly EventPageViewModel _model;
+
         public EventPage()
         {
             InitializeComponent();
-            BindingContext = new EventPageViewModel();
+            _model = new EventPageViewModel(new RestService.RestService());
+            BindingContext = _model;
         }
 
-        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await _model.LoadEvents();
+        }
+
+        private void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
             => ((ListView)sender).SelectedItem = null;
 
-        async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
                 return;
 
             await DisplayAlert("Selected", e.SelectedItem.ToString(), "OK");
 
-            //Deselect Item
+            //Deselect Event
             ((ListView)sender).SelectedItem = null;
         }
     }

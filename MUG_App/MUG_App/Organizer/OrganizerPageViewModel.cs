@@ -6,39 +6,38 @@ using System.Windows.Input;
 using MUG_App.RestService;
 using Xamarin.Forms;
 
-namespace MUG_App.Event
+namespace MUG_App.Organizer
 {
-    public partial class EventPageViewModel : INotifyPropertyChanged
+    public partial class OrganizerPageViewModel : INotifyPropertyChanged
     {
         private readonly IRestService _restService;
         private bool _busy;
-        public ObservableCollection<Event> Items { get; }
 
+        public ObservableCollection<Organizer> Organizers { get; }
 
-        public EventPageViewModel(IRestService restService)
+        public OrganizerPageViewModel(IRestService restService)
         {
             _restService = restService;
-            Items = new ObservableCollection<Event>();
-            
+            Organizers = new ObservableCollection<Organizer>();
             RefreshDataCommand = new Command(async () => await RefreshData());
         }
 
-        public async Task LoadEvents()
-        {
-            const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz/events";
-            var events = await _restService.GetData(restUrl);
-            foreach (var element in events)
-            {
-                Items.Add(new Event {Title = element["name"].ToString(), Description = element["description"].ToString()});
-            }
-        }
         public ICommand RefreshDataCommand { get; }
+
+        public async Task LoadOrganizers()
+        {
+            const string loanaMemberUrl = "https://api.meetup.com/2/member/216711932";
+            const string thomasMemberUrl = "https://api.meetup.com/2/member/184741056";
+            var loanaMember = await _restService.GetData(loanaMemberUrl);
+            var thomasMember = await _restService.GetData(thomasMemberUrl);
+            Organizers.Add(new Organizer { Name = loanaMember["name"].ToString() , City = loanaMember["city"]});
+            Organizers.Add(new Organizer { Name = thomasMember["name"].ToString() , City = thomasMember["city"]});
+        }
 
         private async Task RefreshData()
         {
             IsBusy = true;
-            await LoadEvents();
-
+            await LoadOrganizers();
             IsBusy = false;
         }
 
@@ -52,10 +51,9 @@ namespace MUG_App.Event
                 ((Command)RefreshDataCommand).ChangeCanExecute();
             }
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        
     }
 }

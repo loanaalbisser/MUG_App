@@ -4,13 +4,11 @@
              x:Class="MUG_App.Main.MainPage"
                   xmlns:main="clr-namespace:MUG_App.Main;assembly=MUG_App"
                   xmlns:group="clr-namespace:MUG_App.Group;assembly=MUG_App">
-    
   <MasterDetailPage.Master>
     <main:MainPageMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <NavigationPage
-        BarBackgroundColor="#e51937">
+    <NavigationPage>
       <x:Arguments>
         <group:GroupPage />
       </x:Arguments>
