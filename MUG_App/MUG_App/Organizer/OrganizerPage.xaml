@@ -14,11 +14,13 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding Text}" Style="{DynamicResource ListItemTextStyle}" />
-                        <Label Text="{Binding Detail}" Style="{DynamicResource ListItemDetailTextStyle}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text = "{Binding Name}" Style="{DynamicResource ListItemTextStyle}"/>
+                            <Label Text = "{Binding City}" Style="{DynamicResource SubtitleStyle}"/>
+                        </StackLayout>
                     </StackLayout>
-                    <Image/>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

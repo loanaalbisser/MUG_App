@@ -26,12 +26,14 @@ namespace MUG_App.Organizer
 
         public async Task LoadOrganizers()
         {
-            const string loanaMemberUrl = "https://api.meetup.com/2/member/216711932";
-            const string thomasMemberUrl = "https://api.meetup.com/2/member/184741056";
+            const string loanaMemberUrl = "https://api.meetup.com/2/member/216711932?key=123e651e3f70711b4b15151d6d671f75&group_urlname=mobile-user-group-zentralschweiz&sign=true";
+            const string thomasMemberUrl = "https://api.meetup.com/2/member/184741056?key=123e651e3f70711b4b15151d6d671f75&group_urlname=mobile-user-group-zentralschweiz&sign=true";
             var loanaMember = await _restService.GetData(loanaMemberUrl);
             var thomasMember = await _restService.GetData(thomasMemberUrl);
-            Organizers.Add(new Organizer { Name = loanaMember["name"].ToString() , City = loanaMember["city"]});
-            Organizers.Add(new Organizer { Name = thomasMember["name"].ToString() , City = thomasMember["city"]});
+            var loanaOrganizer = loanaMember["photo"];
+            var thomasOrganizer = thomasMember["photo"];
+            Organizers.Add(new Organizer { Name = loanaMember["name"].ToString() , City = loanaMember["city"].ToString(), ImageUrl = loanaOrganizer["photo_link"].ToString()});
+            Organizers.Add(new Organizer { Name = thomasMember["name"].ToString() , City = thomasMember["city"].ToString(), ImageUrl = thomasOrganizer["photo_link"].ToString()});
         }
 
         private async Task RefreshData()

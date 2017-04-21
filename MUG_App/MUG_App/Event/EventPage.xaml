@@ -10,28 +10,17 @@
             CachingStrategy="RecycleElement"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             RefreshCommand="{Binding RefreshDataCommand}">
-        <!--Built in Cells-->
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <TextCell Text="{Binding Title}"
-                  Detail="{Binding Description}"/>
-      </DataTemplate>
-    </ListView.ItemTemplate>
     
-    <!--Custom View Cells-->
-    <!--
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+            <StackLayout> 
+            <Label Text="{Binding Title}" Style="{DynamicResource ListItemTextStyle}"/>
+            <Label Text="{Binding Description}" Style="{DynamicResource ListItemDetailTextStyle}"/>
           </StackLayout>
         </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>
-    -->
+   
   </ListView>
 </ContentPage>

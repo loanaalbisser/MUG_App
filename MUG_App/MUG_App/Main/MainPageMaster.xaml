@@ -5,7 +5,6 @@
              Title="Mobile Usergroup Zentralschweiz">
   <StackLayout>
     <ListView x:Name="ListViewMenuItems"
-              SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
       <ListView.Header>
@@ -36,7 +35,7 @@
               <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
                     Text="{Binding Title}" 
-                    FontSize="24"/>
+                    FontSize="18"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>

@@ -5,10 +5,11 @@ using MUG_App.RestService;
 
 namespace MUG_App.Group
 {
-    public class GroupPageViewModel : INotifyPropertyChanged
+    public partial class GroupPageViewModel : INotifyPropertyChanged
     {
         private string _groupName;
         private string _description;
+        private string _imageUrl;
         private readonly IRestService _restService;
 
         public GroupPageViewModel(IRestService restService)
@@ -20,8 +21,16 @@ namespace MUG_App.Group
         {
             const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz";
             var items = await _restService.GetData(restUrl);
-            Name = items["name"].ToString();
-            Description = items["description"].ToString();
+            
+            var group = new Group()
+            {
+                Name = items["name"].ToString(),
+                Description = items["description"].ToString()
+            };
+            Name = group.Name;
+            Description = group.Description;
+            var groupPhoto = items["group_photo"];
+            ImageUrl = groupPhoto["photo_link"].ToString();
         }
 
         public string Name
@@ -43,7 +52,17 @@ namespace MUG_App.Group
                 OnPropertyChanged();
             }
         }
-        
+
+        public string ImageUrl
+        {
+            get { return _imageUrl; }
+            set
+            {
+                _imageUrl = value;
+                OnPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

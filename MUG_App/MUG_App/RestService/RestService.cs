@@ -35,16 +35,5 @@ namespace MUG_App.RestService
 
             return _item;
         }
-
-        private static Group.Group Creategroup(string name, string description)
-        {
-            var group = new Group.Group()
-            {
-                Name = name,
-                Description = description
-            };
-            return group;
-        }
-
-    }
-    }
+     }
+}
