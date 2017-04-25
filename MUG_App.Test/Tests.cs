@@ -30,6 +30,13 @@ namespace MUG_App.Test
         {
             app.Screenshot("First screen.");
         }
+
+        [Test]
+        [Explicit]
+        public void StartREPL()
+        {
+            app.Repl();
+        }
     }
 }
 
