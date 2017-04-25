@@ -12,7 +12,7 @@ namespace MUG_App.Event
         {
             BindingContext = this;
             InitializeComponent();
-            var item = (EventPageViewModel.Event) eventArgs.SelectedItem;
+            var item = (Event) eventArgs.SelectedItem;
             Description = item.Description;
         }
 
