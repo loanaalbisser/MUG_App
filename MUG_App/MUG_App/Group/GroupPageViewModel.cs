@@ -15,7 +15,7 @@ namespace MUG_App.Group
         public GroupPageViewModel(IRestService restService)
         {
             _restService = restService;
-            RefreshDataCommand = new Command(async () => await RefreshData());
+            RefreshDataCommand = new Command(async () => await RefreshData(), () => !IsBusy);
         }
 
         public string Name

@@ -14,7 +14,7 @@ namespace MUG_App.Organizer
         {
             _restService = restService;
             Organizers = new ObservableCollection<Organizer>();
-            RefreshDataCommand = new Command(async () => await RefreshData());
+            RefreshDataCommand = new Command(async () => await RefreshData(), () => !IsBusy);
         }
 
         public ObservableCollection<Organizer> Organizers { get; }

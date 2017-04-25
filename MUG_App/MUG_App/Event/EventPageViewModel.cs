@@ -14,7 +14,7 @@ namespace MUG_App.Event
         {
             _restService = restService;
             Items = new ObservableCollection<Event>();
-            RefreshDataCommand = new Command(async () => await RefreshData());
+            RefreshDataCommand = new Command(async () => await RefreshData(), () => !IsBusy);
         }
 
         public ObservableCollection<Event> Items { get; }
