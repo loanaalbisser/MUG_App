@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using MUG_App.Common;
 using MUG_App.RestService;
 
 namespace MUG_App.Group
@@ -25,7 +26,7 @@ namespace MUG_App.Group
             var group = new Group()
             {
                 Name = items["name"].ToString(),
-                Description = items["description"].ToString()
+                Description = HtmlFormatter.RemoveHtmlTags(items["description"].ToString())
             };
             Name = group.Name;
             Description = group.Description;

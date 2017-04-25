@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 
 namespace MUG_App.Test
 {
@@ -37,6 +33,13 @@ namespace MUG_App.Test
         {
             app.Repl();
         }
+
+        private void MenuItem(string menuItem)
+        {
+            app.Tap(c => c.Marked("OK"));
+            app.Tap(c => c.Marked(menuItem));
+        }
+        
     }
 }
 

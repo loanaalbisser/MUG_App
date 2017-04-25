@@ -1,8 +1,10 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MUG_App.Common;
 using MUG_App.RestService;
 using Xamarin.Forms;
 
@@ -29,9 +31,10 @@ namespace MUG_App.Event
             var events = await _restService.GetData(restUrl);
             foreach (var element in events)
             {
-                Items.Add(new Event {Title = element["name"].ToString(), Description = element["description"].ToString()});
+                Items.Add(new Event {Title = element["name"].ToString(), Description = HtmlFormatter.RemoveHtmlTags(element["description"].ToString())});
             }
         }
+
         public ICommand RefreshDataCommand { get; }
 
         private async Task RefreshData()
