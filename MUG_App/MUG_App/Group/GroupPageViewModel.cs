@@ -14,6 +14,11 @@ namespace MUG_App.Group
         public GroupPageViewModel(IGroupLoaderService loaderService)
         {
             _loaderService = loaderService;
+
+            _groupName = string.Empty;
+            _description = string.Empty;
+            _imageUrl = string.Empty;
+
             RefreshDataCommand = new Command(async () => await RefreshData(), () => !IsBusy);
         }
 
