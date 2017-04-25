@@ -39,21 +39,21 @@ namespace MUG_App.Test.Unit.Event
         public void RefreshDataCommand_WhenExecuted_LoadsEventsFromService_And_FillsThemIntoEvents()
         {
             // Arrange
-            var fakeEvent1 = CreateDummyEvent("Event 1");
-            var fakeEvent2 = CreateDummyEvent("Event 2");
-            var fakeEvent3 = CreateDummyEvent("Event 3");
+            var dummyEvent1 = CreateDummyEvent("Event 1");
+            var dummyEvent2 = CreateDummyEvent("Event 2");
+            var dummyEvent3 = CreateDummyEvent("Event 3");
 
-            Testee.Events.Add(fakeEvent1);
+            Testee.Events.Add(dummyEvent1);
 
-            A.CallTo(() => _fakeEventLoaderService.LoadEventsAsync()).Returns(new[] { fakeEvent2, fakeEvent3 });
+            A.CallTo(() => _fakeEventLoaderService.LoadEventsAsync()).Returns(new[] { dummyEvent2, dummyEvent3 });
 
             // Act
             Testee.RefreshDataCommand.Execute(null);
 
             // Assert
             Testee.Events.Count.Should().Be(2);
-            Testee.Events.First().Should().Be(fakeEvent2);
-            Testee.Events.Last().Should().Be(fakeEvent3);
+            Testee.Events.First().Should().Be(dummyEvent2);
+            Testee.Events.Last().Should().Be(dummyEvent3);
         }
 
         [Test]
@@ -93,7 +93,6 @@ namespace MUG_App.Test.Unit.Event
             // Assert
             result.Should().BeFalse();
         }
-
 
         [Test]
         public void IsBusy_WhenModified_UpdatesRefreshDataCommand()
