@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MUG_App.Base
+namespace MUG_App.Common
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

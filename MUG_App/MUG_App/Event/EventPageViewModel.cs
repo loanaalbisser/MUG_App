@@ -1,7 +1,5 @@
 using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using MUG_App.Base;
 using MUG_App.Common;
 using MUG_App.RestService;
 using Xamarin.Forms;
