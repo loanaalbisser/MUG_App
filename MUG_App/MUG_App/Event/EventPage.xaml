@@ -4,6 +4,7 @@
              x:Class="MUG_App.Event.EventPage"
              Title="Events">
     <ListView ItemsSource="{Binding Events}"
+              StyleId="eventList"
               HasUnevenRows="True"
             ItemTapped="Handle_ItemTapped"
             ItemSelected="Handle_ItemSelected"
@@ -14,7 +15,7 @@
     
     <ListView.ItemTemplate>
       <DataTemplate>
-        <ViewCell>
+        <ViewCell StyleId="eventListCell">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20">
                     <Label Text="{Binding Title}" FormattedText="Bold" FontSize="20"/>
                     <Label Text="{Binding YesRsvpCount}" FontSize="14"/>

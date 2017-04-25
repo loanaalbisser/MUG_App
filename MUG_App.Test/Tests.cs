@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using FluentAssertions;
+using NUnit.Framework;
 using Xamarin.UITest;
 
 namespace MUG_App.Test
@@ -7,39 +9,85 @@ namespace MUG_App.Test
     [TestFixture(Platform.iOS)]
     public class Tests
     {
-        IApp app;
-        Platform platform;
+        private IApp _app;
+        private readonly Platform _platform;
+
+        private const int NumberOfEventItems = 3;
+        private const int NumberOfOrganizerItems = 2;
 
         public Tests(Platform platform)
         {
-            this.platform = platform;
+            this._platform = platform;
         }
 
         [SetUp]
         public void BeforeEachTest()
         {
-            app = AppInitializer.StartApp(platform);
-        }
-
-        [Test]
-        public void AppLaunches()
-        {
-            app.Screenshot("First screen.");
+            _app = AppInitializer.StartApp(_platform);
         }
 
         [Test]
         [Explicit]
         public void StartREPL()
         {
-            app.Repl();
+            _app.Repl();
         }
 
-        private void MenuItem(string menuItem)
+        [Test]
+        public void ShowEvents()
         {
-            app.Tap(c => c.Marked("OK"));
-            app.Tap(c => c.Marked(menuItem));
+            OpenMenu("Events");
+            WaitForEvents();
+            CheckNumberOfListViewItems(NumberOfEventItems);
+            //toDo PullToRefresh
+            TapFirstItem();
         }
-        
+
+        [Test]
+        public void ShowOrganizer()
+        {
+            OpenMenu("Organizers");
+            WaitForOrganizers();
+            CheckNumberOfListViewItems(NumberOfOrganizerItems);
+        }
+
+        [Test]
+        public void ShowGroup()
+        {
+            OpenMenu("Group");
+        }
+
+        private void OpenMenu(string menuItem)
+        {
+            _app.Tap(c => c.Marked("OK"));
+            _app.Tap(c => c.Marked(menuItem));
+        }
+
+        private void WaitForEvents()
+        {
+            _app.WaitForElement(c => c.Marked("Mobile App Testing"));
+        }
+
+        private void WaitForOrganizers()
+        {
+            _app.WaitForElement(c => c.Marked("Luzern"));
+        }
+
+        private void CheckNumberOfListViewItems(int numberOfItems)
+        {
+            NumberOfListViewItems().Should().Be(numberOfItems);
+        }
+
+        private void TapFirstItem()
+        {
+            _app.Tap(c => c.Class("ListView").Index(0));
+        }
+
+        private int NumberOfListViewItems()
+        {
+            return _app.Query(c => c.Class("ViewCellRenderer_ViewCellContainer")).Count();
+        }
+
     }
 }
 
