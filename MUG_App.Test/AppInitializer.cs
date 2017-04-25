@@ -14,6 +14,7 @@ namespace MUG_App.Test
             {
                 return ConfigureApp
                     .Android
+                    .InstalledApp("MUG_App.Android")
                     .StartApp();
             }
 
