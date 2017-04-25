@@ -1,23 +1,22 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MUG_App.Common;
-using MUG_App.RestService;
 using Xamarin.Forms;
 
 namespace MUG_App.Event
 {
     public class EventPageViewModel : ViewModelBase
     {
-        private readonly IRestService _restService;
+        private readonly IEventLoaderService _loaderService;
 
-        public EventPageViewModel(IRestService restService)
+        public EventPageViewModel(IEventLoaderService loaderService)
         {
-            _restService = restService;
-            Items = new ObservableCollection<Event>();
+            _loaderService = loaderService;
+            Events = new ObservableCollection<Event>();
             RefreshDataCommand = new Command(async () => await RefreshData(), () => !IsBusy);
         }
 
-        public ObservableCollection<Event> Items { get; }
+        public ObservableCollection<Event> Events { get; }
 
         public Command RefreshDataCommand { get; }
 
@@ -36,15 +35,13 @@ namespace MUG_App.Event
 
         private async Task LoadEvents()
         {
-            const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz/events";
+            var loadedEvents = await _loaderService.LoadEventsAsync();
 
-            var events = await _restService.GetData(restUrl);
+            Events.Clear();
 
-            Items.Clear();
-
-            foreach (var element in events)
+            foreach (var loadedEvent in loadedEvents)
             {
-                Items.Add(new Event { Title = element["name"].ToString(), Description = HtmlFormatter.RemoveHtmlTags(element["description"].ToString()) });
+                Events.Add(loadedEvent);
             }
         }
     }

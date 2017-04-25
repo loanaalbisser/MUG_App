@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using MUG_App.Services;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace MUG_App.Event
@@ -11,7 +12,7 @@ namespace MUG_App.Event
         public EventPage()
         {
             InitializeComponent();
-            _viewModel = new EventPageViewModel(new RestService.RestService());
+            _viewModel = new EventPageViewModel(new RESTLoaderService());
             BindingContext = _viewModel;
         }
 

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MUG_App.Event.EventPage"
              Title="Events">
-    <ListView ItemsSource="{Binding Items}"
+    <ListView ItemsSource="{Binding Events}"
               HasUnevenRows="True"
             ItemTapped="Handle_ItemTapped"
             ItemSelected="Handle_ItemSelected"
