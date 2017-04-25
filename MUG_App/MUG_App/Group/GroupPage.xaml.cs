@@ -7,19 +7,20 @@ namespace MUG_App.Group
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GroupPage : ContentPage
     {
-        private readonly GroupPageViewModel _model;
+        private readonly GroupPageViewModel _viewModel;
 
         public GroupPage()
         {
             InitializeComponent();
-            _model = new GroupPageViewModel(new RestService.RestService());
-            BindingContext = _model;
+            _viewModel = new GroupPageViewModel(new RestService.RestService());
+            BindingContext = _viewModel;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            await _model.LoadGroupData();
+            
+            _viewModel.RefreshDataCommand.Execute(null);
         }
     }
 }

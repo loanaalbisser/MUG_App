@@ -6,19 +6,20 @@ namespace MUG_App.Event
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventPage : ContentPage
     {
-        private readonly EventPageViewModel _model;
+        private readonly EventPageViewModel _viewModel;
 
         public EventPage()
         {
             InitializeComponent();
-            _model = new EventPageViewModel(new RestService.RestService());
-            BindingContext = _model;
+            _viewModel = new EventPageViewModel(new RestService.RestService());
+            BindingContext = _viewModel;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            await _model.LoadEvents();
+
+            _viewModel.RefreshDataCommand.Execute(null);
         }
 
         private void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

@@ -39,9 +39,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\HtmlFormatter.cs" />
+<<<<<<< HEAD
     <Compile Include="Event\EventDetailPage.xaml.cs">
       <DependentUpon>EventDetailPage.xaml</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Common\ViewModelBase.cs" />
+>>>>>>> 942a0f298be8ae9eb609660d4b813a5f0a9547fd
     <Compile Include="Event\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>
