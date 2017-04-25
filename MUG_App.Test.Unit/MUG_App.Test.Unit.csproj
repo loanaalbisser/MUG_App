@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Event\EventFixture.cs" />
     <Compile Include="Group\GroupFixture.cs" />
+    <Compile Include="Organizer\OrganizerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
