@@ -38,8 +38,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Base\ViewModelBase.cs" />
     <Compile Include="Common\HtmlFormatter.cs" />
+    <Compile Include="Common\ViewModelBase.cs" />
     <Compile Include="Event\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>
