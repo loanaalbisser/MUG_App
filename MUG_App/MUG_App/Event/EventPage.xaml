@@ -16,8 +16,8 @@
       <DataTemplate>
         <ViewCell>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20">
-                    <Label Text="{Binding Title}" FontSize="20" FormattedText="Bold"/>
-                    <Label Text="{Binding Description}" FontSize="18"/>
+                    <Label Text="{Binding Title}" FormattedText="Bold" FontSize="20"/>
+                    <Label Text="{Binding YesRsvpCount}" FontSize="14"/>
           </StackLayout>
         </ViewCell>
       </DataTemplate>

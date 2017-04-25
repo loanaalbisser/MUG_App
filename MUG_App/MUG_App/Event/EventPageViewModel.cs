@@ -44,7 +44,11 @@ namespace MUG_App.Event
 
             foreach (var element in events)
             {
-                Items.Add(new Event { Title = element["name"].ToString(), Description = HtmlFormatter.RemoveHtmlTags(element["description"].ToString()) });
+                Items.Add(new Event {
+                            Title = element["name"].ToString(),
+                            Description = HtmlFormatter.RemoveHtmlTags(element["description"].ToString()),
+                            YesRsvpCount = $"Freie Plätz:{element["yes_rsvp_count"].ToString()}"
+                });
             }
         }
     }

@@ -47,8 +47,16 @@ namespace MUG_App.Organizer
             var thomasOrganizer = thomasMember["photo"];
 
             Organizers.Clear();
-            Organizers.Add(new Organizer { Name = loanaMember["name"].ToString(), City = loanaMember["city"].ToString(), ImageUrl = loanaOrganizer["photo_link"].ToString() });
-            Organizers.Add(new Organizer { Name = thomasMember["name"].ToString(), City = thomasMember["city"].ToString(), ImageUrl = thomasOrganizer["photo_link"].ToString() });
+            Organizers.Add(new Organizer {
+                Name = $"Name: {loanaMember["name"].ToString()}",
+                City = $"Wohnort: {loanaMember["city"].ToString()}",
+                ImageUrl = loanaOrganizer["photo_link"].ToString() });
+            Organizers.Add(new Organizer
+            {
+                Name = $"Name: {thomasMember["name"].ToString()}",
+                City = $"Wohnort: {thomasMember["city"].ToString()}",
+                ImageUrl = thomasOrganizer["photo_link"].ToString()
+            });
         }
     }
 }
