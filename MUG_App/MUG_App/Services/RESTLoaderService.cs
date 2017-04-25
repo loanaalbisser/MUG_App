@@ -35,7 +35,8 @@ namespace MUG_App.Services
                 var modelEvent = new Event.Event
                 {
                     Title = loadedEvent["name"].ToString(),
-                    Description = HtmlFormatter.RemoveHtmlTags(loadedEvent["description"].ToString())
+                    Description = HtmlFormatter.RemoveHtmlTags(loadedEvent["description"].ToString()),
+                    YesRsvpCount = $"Freie Plätze: {loadedEvent["yes_rsvp_count"].ToString()}"
                 };
 
                 result.Add(modelEvent);

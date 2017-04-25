@@ -11,7 +11,7 @@
                     FontAttributes="Bold"
                     FontSize="18"/>
             <Image Source="{Binding ImageUrl}"/>
-            <Label Text="{Binding Description}"/>
+            <Label Text="{Binding Description}" FontSize="16"/>
     </StackLayout>
   </ScrollView>
 </ContentPage>

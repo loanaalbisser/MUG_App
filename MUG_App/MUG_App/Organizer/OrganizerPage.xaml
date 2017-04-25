@@ -5,7 +5,6 @@
              Title="Organizer">
     <ListView ItemsSource="{Binding Organizers}"
             ItemTapped="Handle_ItemTapped"
-            ItemSelected="Handle_ItemSelected"
             HasUnevenRows="true"
             IsPullToRefreshEnabled="true"
             CachingStrategy="RecycleElement"
@@ -14,11 +13,11 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50"/>
+                    <StackLayout Orientation="Horizontal" Margin="20">
+                        <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100"/>
                         <StackLayout Orientation="Vertical">
-                            <Label Text = "{Binding Name}" Style="{DynamicResource ListItemTextStyle}"/>
-                            <Label Text = "{Binding City}" Style="{DynamicResource SubtitleStyle}"/>
+                            <Label Text = "{Binding Name}" FontSize="18"/>
+                            <Label Text = "{Binding City}" FontSize="18"/>
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>

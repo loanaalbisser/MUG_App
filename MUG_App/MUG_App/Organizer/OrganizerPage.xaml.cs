@@ -24,15 +24,6 @@ namespace MUG_App.Organizer
 
         private void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
             => ((ListView)sender).SelectedItem = null;
-
-        private async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null)
-                return;
-
-            await DisplayAlert("Selected", e.SelectedItem.ToString(), "OK");
-            
-            ((ListView)sender).SelectedItem = null;
-        }
+        
     }
 }

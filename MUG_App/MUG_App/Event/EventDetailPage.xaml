@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MUG_App.Event.EventDetailPage">
     <ScrollView>
-        <StackLayout Padding="10">
+        <StackLayout Margin="20">
+            <Label Text="Event Beschreibung" 
+                   FontAttributes="Bold" 
+                   FontSize="18"></Label>
             <Label Text="{Binding Description}"
-                    HorizontalTextAlignment="Center"
-                    FontAttributes="Bold"
-                    FontSize="18"/>
+                    FontSize="16"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
