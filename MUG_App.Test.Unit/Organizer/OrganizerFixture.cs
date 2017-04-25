@@ -17,10 +17,8 @@ namespace MUG_App.Test.Unit.Organizer
         [Test]
         public void Name_IsInitialized_ByConstructor()
         {
-            // Act
-            var result = _testee.Name;
-
             // Assert
+            var result = _testee.Name;
             result.Should().BeEmpty();
         }
 
@@ -40,10 +38,8 @@ namespace MUG_App.Test.Unit.Organizer
         [Test]
         public void Description_IsInitialized_ByConstructor()
         {
-            // Act
-            var result = _testee.Description;
-
             // Assert
+            var result = _testee.Description;
             result.Should().BeEmpty();
         }
 
@@ -63,10 +59,8 @@ namespace MUG_App.Test.Unit.Organizer
         [Test]
         public void City_IsInitialized_ByConstructor()
         {
-            // Act
-            var result = _testee.City;
-
             // Assert
+            var result = _testee.City;
             result.Should().BeEmpty();
         }
 
@@ -86,10 +80,8 @@ namespace MUG_App.Test.Unit.Organizer
         [Test]
         public void ImageUrl_IsInitialized_ByConstructor()
         {
-            // Act
-            var result = _testee.ImageUrl;
-
             // Assert
+            var result = _testee.ImageUrl;
             result.Should().BeEmpty();
         }
 

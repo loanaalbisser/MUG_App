@@ -17,10 +17,8 @@ namespace MUG_App.Test.Unit.Event
         [Test]
         public void Title_IsInitialized_ByConstructor()
         {
-            // Act
-            var result = _testee.Title;
-
             // Assert
+            var result = _testee.Title;
             result.Should().BeEmpty();
         }
 
@@ -40,10 +38,8 @@ namespace MUG_App.Test.Unit.Event
         [Test]
         public void Description_IsInitialized_ByConstructor()
         {
-            // Act
-            var result = _testee.Description;
-
             // Assert
+            var result = _testee.Description;
             result.Should().BeEmpty();
         }
 
