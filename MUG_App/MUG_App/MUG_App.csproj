@@ -39,6 +39,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\HtmlFormatter.cs" />
+    <Compile Include="Event\EventDetailPage.xaml.cs">
+      <DependentUpon>EventDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\ViewModelBase.cs" />
     <Compile Include="Event\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
@@ -54,6 +57,7 @@
     <Compile Include="Group\IGroupLoaderService.cs" />
     <Compile Include="Organizer\IOrganizerLoaderService.cs" />
     <Compile Include="Organizer\Organizer.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\RESTLoaderService.cs" />
     <Compile Include="Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -128,7 +132,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Event\EventDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Group\GroupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

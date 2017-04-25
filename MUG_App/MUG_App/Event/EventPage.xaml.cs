@@ -30,8 +30,8 @@ namespace MUG_App.Event
         {
             if (e.SelectedItem == null)
                 return;
-
-            await DisplayAlert("Selected", e.SelectedItem.ToString(), "OK");
+            
+            await Navigation.PushAsync(new EventDetailPage(e));
 
             //Deselect Event
             ((ListView)sender).SelectedItem = null;

@@ -15,9 +15,9 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"> 
-            <Label Text="{Binding Title}" Style="{DynamicResource ListItemTextStyle}"/>
-            <Label Text="{Binding Description}" Style="{DynamicResource ListItemDetailTextStyle}"/>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20">
+                    <Label Text="{Binding Title}" FontSize="20" FormattedText="Bold"/>
+                    <Label Text="{Binding Description}" FontSize="18"/>
           </StackLayout>
         </ViewCell>
       </DataTemplate>
