@@ -39,6 +39,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\HtmlFormatter.cs" />
+    <Compile Include="Event\EventDetailPage.xaml.cs">
+      <DependentUpon>EventDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Event\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>
@@ -50,6 +53,7 @@
     </Compile>
     <Compile Include="Group\GroupPageViewModel.cs" />
     <Compile Include="Organizer\Organizer.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RestService\IRestService.cs" />
     <Compile Include="RestService\RestService.cs" />
     <Compile Include="Main\MainPage.xaml.cs">
@@ -125,7 +129,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Event\EventDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Group\GroupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
