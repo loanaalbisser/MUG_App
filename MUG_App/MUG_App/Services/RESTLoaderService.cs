@@ -13,8 +13,12 @@ namespace MUG_App.Services
 {
     public class RESTLoaderService : IEventLoaderService, IGroupLoaderService, IOrganizerLoaderService
     {
+        private const string GroupURL = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz";
+        private const string EventsURL = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz/events";
+        private const string Organizer1URL = "https://api.meetup.com/2/member/216711932?key=123e651e3f70711b4b15151d6d671f75&group_urlname=mobile-user-group-zentralschweiz&sign=true";
+        private const string Organizer2URL = "https://api.meetup.com/2/member/184741056?key=123e651e3f70711b4b15151d6d671f75&group_urlname=mobile-user-group-zentralschweiz&sign=true";
+
         private readonly HttpClient _client;
-        private dynamic _item;
 
         public RESTLoaderService()
         {
@@ -25,10 +29,8 @@ namespace MUG_App.Services
 
         public async Task<IEnumerable<Event.Event>> LoadEventsAsync()
         {
-            const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz/events";
-
             var result = new List<Event.Event>();
-            var loadedEvents = await GetDataAsync(restUrl);
+            var loadedEvents = await GetDataAsync(EventsURL);
 
             foreach (var loadedEvent in loadedEvents)
             {
@@ -51,9 +53,7 @@ namespace MUG_App.Services
 
         public async Task<Group.Group> LoadGroupAsync()
         {
-            const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz";
-
-            var loadedGroup = await GetDataAsync(restUrl);
+            var loadedGroup = await GetDataAsync(GroupURL);
 
             var result = new Group.Group
             {
@@ -72,16 +72,13 @@ namespace MUG_App.Services
 
         public async Task<IEnumerable<Organizer.Organizer>> LoadOrganizersAsync()
         {
-            const string restUrlLoana = "https://api.meetup.com/2/member/216711932?key=123e651e3f70711b4b15151d6d671f75&group_urlname=mobile-user-group-zentralschweiz&sign=true";
-            const string restUrlThomas = "https://api.meetup.com/2/member/184741056?key=123e651e3f70711b4b15151d6d671f75&group_urlname=mobile-user-group-zentralschweiz&sign=true";
-
             var result = new List<Organizer.Organizer>();
 
-            var modelOrganizerLoana = await LoadOrganizerAsync(restUrlLoana);
-            var modelOrganizerThomas = await LoadOrganizerAsync(restUrlThomas);
+            var modelOrganizer1 = await LoadOrganizerAsync(Organizer1URL);
+            var modelOrganizer2 = await LoadOrganizerAsync(Organizer2URL);
 
-            result.Add(modelOrganizerLoana);
-            result.Add(modelOrganizerThomas);
+            result.Add(modelOrganizer1);
+            result.Add(modelOrganizer2);
 
             return result;
         }
@@ -92,14 +89,16 @@ namespace MUG_App.Services
 
         private async Task<dynamic> GetDataAsync(string restUrl)
         {
-            var uri = new Uri(string.Format(restUrl));
+            dynamic result = null;
+
             try
             {
+                var uri = new Uri(string.Format(restUrl));
                 var response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    _item = JsonConvert.DeserializeObject<dynamic>(content);
+                    result = JsonConvert.DeserializeObject<dynamic>(content);
                 }
             }
             catch (Exception ex)
@@ -107,7 +106,7 @@ namespace MUG_App.Services
                 Debug.WriteLine(@"ERROR {0}", ex.Message);
             }
 
-            return _item;
+            return result;
         }
 
         private async Task<Organizer.Organizer> LoadOrganizerAsync(string restUrl)
@@ -117,6 +116,7 @@ namespace MUG_App.Services
             var modelOrganizer = new Organizer.Organizer
             {
                 Name = loadedOrganizer["name"].ToString(),
+                Description = loadedOrganizer["bio"] != null ? loadedOrganizer["bio"].ToString() : string.Empty,
                 City = loadedOrganizer["city"].ToString(),
                 ImageUrl = loadedOrganizer["photo"]["photo_link"].ToString()
             };
