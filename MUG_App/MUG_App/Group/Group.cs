@@ -2,6 +2,14 @@
 {
     public class Group
     {
+        public Group()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
+            City = string.Empty;
+            ImageUrl = string.Empty;
+        }
+
         public string Name { get; set; }
 
         public string Description { get; set; }

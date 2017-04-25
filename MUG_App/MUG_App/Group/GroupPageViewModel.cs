@@ -1,20 +1,19 @@
 using System.Threading.Tasks;
 using MUG_App.Common;
-using MUG_App.RestService;
 using Xamarin.Forms;
 
 namespace MUG_App.Group
 {
     public class GroupPageViewModel : ViewModelBase
     {
-        private readonly IRestService _restService;
+        private readonly IGroupLoaderService _loaderService;
         private string _groupName;
         private string _description;
         private string _imageUrl;
 
-        public GroupPageViewModel(IRestService restService)
+        public GroupPageViewModel(IGroupLoaderService loaderService)
         {
-            _restService = restService;
+            _loaderService = loaderService;
             RefreshDataCommand = new Command(async () => await RefreshData(), () => !IsBusy);
         }
 
@@ -65,20 +64,11 @@ namespace MUG_App.Group
 
         private async Task LoadGroupInfo()
         {
-            const string restUrl = "https://api.meetup.com/Mobile-User-Group-Zentralschweiz";
-
-            var items = await _restService.GetData(restUrl);
-
-            var group = new Group
-            {
-                Name = items["name"].ToString(),
-                Description = HtmlFormatter.RemoveHtmlTags(items["description"].ToString())
-            };
+            var group = await _loaderService.LoadGroupAsync();
 
             Name = group.Name;
             Description = group.Description;
-            var groupPhoto = items["group_photo"];
-            ImageUrl = groupPhoto["photo_link"].ToString();
+            ImageUrl = group.ImageUrl;
         }
     }
 }

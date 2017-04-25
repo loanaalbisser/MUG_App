@@ -48,15 +48,17 @@
     </Compile>
     <Compile Include="Event\EventPageViewModel.cs" />
     <Compile Include="Event\Event.cs" />
+    <Compile Include="Event\IEventLoaderService.cs" />
     <Compile Include="Group\Group.cs" />
     <Compile Include="Group\GroupPage.xaml.cs">
       <DependentUpon>GroupPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Group\GroupPageViewModel.cs" />
+    <Compile Include="Group\IGroupLoaderService.cs" />
+    <Compile Include="Organizer\IOrganizerLoaderService.cs" />
     <Compile Include="Organizer\Organizer.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="RestService\IRestService.cs" />
-    <Compile Include="RestService\RestService.cs" />
+    <Compile Include="Services\RESTLoaderService.cs" />
     <Compile Include="Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
