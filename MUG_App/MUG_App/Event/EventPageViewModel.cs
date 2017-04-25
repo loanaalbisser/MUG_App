@@ -1,6 +1,8 @@
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using MUG_App.Base;
+using MUG_App.Common;
 using MUG_App.RestService;
 using Xamarin.Forms;
 
@@ -44,7 +46,7 @@ namespace MUG_App.Event
 
             foreach (var element in events)
             {
-                Items.Add(new Event { Title = element["name"].ToString(), Description = element["description"].ToString() });
+                Items.Add(new Event { Title = element["name"].ToString(), Description = HtmlFormatter.RemoveHtmlTags(element["description"].ToString()) });
             }
         }
     }

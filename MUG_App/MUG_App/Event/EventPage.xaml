@@ -4,6 +4,7 @@
              x:Class="MUG_App.Event.EventPage"
              Title="Events">
     <ListView ItemsSource="{Binding Items}"
+              HasUnevenRows="True"
             ItemTapped="Handle_ItemTapped"
             ItemSelected="Handle_ItemSelected"
             IsPullToRefreshEnabled="true"
@@ -14,7 +15,7 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-            <StackLayout> 
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"> 
             <Label Text="{Binding Title}" Style="{DynamicResource ListItemTextStyle}"/>
             <Label Text="{Binding Description}" Style="{DynamicResource ListItemDetailTextStyle}"/>
           </StackLayout>
