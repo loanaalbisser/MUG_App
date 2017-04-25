@@ -57,6 +57,27 @@ namespace MUG_App.Test.Unit.Event
         }
 
         [Test]
+        public void RSVPCount_IsInitialized_ByConstructor()
+        {
+            // Assert
+            var result = _testee.RSVPCount;
+            result.Should().Be(0);
+        }
+
+        [Test]
+        public void RSVPCount_CanBeModified()
+        {
+            // Arrange
+            const int newCount = 42;
+
+            // Act
+            _testee.RSVPCount = newCount;
+
+            // Assert
+            _testee.RSVPCount.Should().Be(newCount);
+        }
+
+        [Test]
         public void ToString_ReturnsCorrectResult()
         {
             // Arrange

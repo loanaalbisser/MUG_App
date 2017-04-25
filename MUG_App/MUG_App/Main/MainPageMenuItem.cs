@@ -1,18 +1,15 @@
-﻿using System;
-using MUG_App.Group;
-
-namespace MUG_App.Main
+﻿namespace MUG_App.Main
 {
-
     public class MainPageMenuItem
     {
         public MainPageMenuItem()
         {
-            TargetType = typeof(GroupPage);
+            Id = -1;
+            Title = string.Empty;
         }
-        public int Id { get; set; }
-        public string Title { get; set; }
 
-        public Type TargetType { get; set; }
+        public int Id { get; set; }
+
+        public string Title { get; set; }
     }
 }
