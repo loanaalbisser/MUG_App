@@ -39,7 +39,8 @@ namespace MUG_App.Test
             OpenMenu("Events");
             WaitForEvents();
             CheckNumberOfListViewItems(NumberOfEventItems);
-            //toDo PullToRefresh
+            PullToRefresh();
+            CheckNumberOfListViewItems(NumberOfEventItems);
             TapFirstItem();
         }
 
@@ -55,12 +56,24 @@ namespace MUG_App.Test
         public void ShowGroup()
         {
             OpenMenu("Group");
+            CheckGroupTitle();
+        }
+
+        private void PullToRefresh()
+        {
+            _app.DragCoordinates(500, 250, 500, 900);
         }
 
         private void OpenMenu(string menuItem)
         {
             _app.Tap(c => c.Marked("OK"));
             _app.Tap(c => c.Marked(menuItem));
+        }
+
+        private void CheckGroupTitle()
+        {
+            var result = _app.Query(c => c.Class("FormsTextView")).FirstOrDefault();
+            result?.Text.Should().Be("Mobile User Group Zentralschweiz");
         }
 
         private void WaitForEvents()

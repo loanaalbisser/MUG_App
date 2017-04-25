@@ -4,7 +4,7 @@
              x:Class="MUG_App.Event.EventDetailPage">
     <ScrollView>
         <StackLayout Margin="20">
-            <Label Text="Event Beschreibung" 
+            <Label Text="Beschreibung" 
                    FontAttributes="Bold" 
                    FontSize="18"></Label>
             <Label Text="{Binding Description}"
