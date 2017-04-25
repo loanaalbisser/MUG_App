@@ -17,7 +17,7 @@
       <DataTemplate>
         <ViewCell StyleId="eventListCell">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20">
-                    <Label Text="{Binding Title}" FormattedText="Bold" FontSize="20"/>
+                    <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="16"/>
                     <Label Text="{Binding YesRsvpCount}" FontSize="14"/>
           </StackLayout>
         </ViewCell>

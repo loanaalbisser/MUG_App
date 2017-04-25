@@ -36,7 +36,7 @@ namespace MUG_App.Services
                 {
                     Title = loadedEvent["name"].ToString(),
                     Description = HtmlFormatter.RemoveHtmlTags(loadedEvent["description"].ToString()),
-                    YesRsvpCount = $"Freie Plätze: {loadedEvent["yes_rsvp_count"].ToString()}"
+                    YesRsvpCount = $"Freie Plaetze : {loadedEvent["yes_rsvp_count"].ToString()}"
                 };
 
                 result.Add(modelEvent);
@@ -116,8 +116,8 @@ namespace MUG_App.Services
 
             var modelOrganizer = new Organizer.Organizer
             {
-                Name = loadedOrganizer["name"].ToString(),
-                City = loadedOrganizer["city"].ToString(),
+                Name = $"Name: {loadedOrganizer["name"].ToString()}",
+                City = $"Wohnort: {loadedOrganizer["city"].ToString()}",
                 ImageUrl = loadedOrganizer["photo"]["photo_link"].ToString()
             };
 
