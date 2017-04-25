@@ -74,6 +74,8 @@
     <Compile Include="Event\EventFixture.cs" />
     <Compile Include="Group\GroupPageViewModelFixture.cs" />
     <Compile Include="Group\GroupFixture.cs" />
+    <Compile Include="Main\MainPageMasterViewModelFixture.cs" />
+    <Compile Include="Main\MainPageMenuItemFixture.cs" />
     <Compile Include="Organizer\OrganizerPageViewModelFixture.cs" />
     <Compile Include="Organizer\OrganizerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

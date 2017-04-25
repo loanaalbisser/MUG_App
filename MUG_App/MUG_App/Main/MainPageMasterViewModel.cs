@@ -11,7 +11,7 @@ namespace MUG_App.Main
             {
                 new MainPageMenuItem { Id = 0, Title = "Group" },
                 new MainPageMenuItem { Id = 1, Title = "Organizers" },
-                new MainPageMenuItem { Id = 2, Title = "Events" },
+                new MainPageMenuItem { Id = 2, Title = "Events" }
             });
         }
 
