@@ -17,7 +17,7 @@ namespace MUG_App.Test
 
         public Tests(Platform platform)
         {
-            this._platform = platform;
+            _platform = platform;
         }
 
         [SetUp]
@@ -38,9 +38,9 @@ namespace MUG_App.Test
         {
             OpenMenu("Events");
             WaitForEvents();
-            CheckNumberOfListViewItems(NumberOfEventItems);
+            CheckNumberOfEventListItems(NumberOfEventItems);
             PullToRefresh();
-            CheckNumberOfListViewItems(NumberOfEventItems);
+            CheckNumberOfEventListItems(NumberOfEventItems);
             TapFirstItem();
         }
 
@@ -49,7 +49,7 @@ namespace MUG_App.Test
         {
             OpenMenu("Organizers");
             WaitForOrganizers();
-            CheckNumberOfListViewItems(NumberOfOrganizerItems);
+            CheckNumberOfOrganizerListItems(NumberOfOrganizerItems);
         }
 
         [Test]
@@ -72,33 +72,35 @@ namespace MUG_App.Test
 
         private void CheckGroupTitle()
         {
-            var result = _app.Query(c => c.Class("FormsTextView")).FirstOrDefault();
+            var result = _app.Query(c => c.Marked("groupNameLabel")).FirstOrDefault();
             result?.Text.Should().Be("Mobile User Group Zentralschweiz");
         }
 
         private void WaitForEvents()
         {
-            _app.WaitForElement(c => c.Marked("Mobile App Testing"));
+            _app.WaitForElement(c => c.Marked("eventListItem"));
         }
 
         private void WaitForOrganizers()
         {
-            _app.WaitForElement(c => c.Marked("Luzern"));
+            _app.WaitForElement(c => c.Marked("organizerListItem"));
         }
 
-        private void CheckNumberOfListViewItems(int numberOfItems)
+        private void CheckNumberOfEventListItems(int numberOfItems)
         {
-            NumberOfListViewItems().Should().Be(numberOfItems);
+            var result = _app.Query(c => c.Marked("eventListItem")).Count();
+            result.Should().Be(numberOfItems);
+        }
+
+        private void CheckNumberOfOrganizerListItems(int numberOfItems)
+        {
+            var result = _app.Query(c => c.Marked("organizerListItem")).Count();
+            result.Should().Be(numberOfItems);
         }
 
         private void TapFirstItem()
         {
-            _app.Tap(c => c.Class("ListView").Index(0));
-        }
-
-        private int NumberOfListViewItems()
-        {
-            return _app.Query(c => c.Class("ViewCellRenderer_ViewCellContainer")).Count();
+            _app.Tap(c => c.Marked("eventList").Index(0));
         }
 
     }

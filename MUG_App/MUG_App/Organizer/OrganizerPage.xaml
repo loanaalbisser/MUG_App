@@ -16,7 +16,7 @@
                     <StackLayout Orientation="Horizontal" Margin="20">
                         <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100"/>
                         <StackLayout Orientation="Vertical">
-                            <Label Text = "{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text = "{Binding Name}" FontAttributes="Bold" FontSize="16" AutomationId="organizerListItem"/>
                             <Label Text = "{Binding City}" FontSize="14"/>
                         </StackLayout>
                     </StackLayout>
