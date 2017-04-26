@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
 namespace MUG_App.iOS
@@ -22,7 +18,12 @@ namespace MUG_App.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            #if __UITESTING__
+            Xamarin.Calabash.Start();
+            #endif
+
             global::Xamarin.Forms.Forms.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -70,5 +70,13 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MUG_App\MUG_App.iOS\MUG_App.iOS.csproj">
+      <Project>{5D7334F5-BD12-448C-AFAF-A181E06F469C}</Project>
+      <Name>MUG_App.iOS</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
