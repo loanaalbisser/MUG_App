@@ -6,11 +6,7 @@ namespace MUG_App.Common
     {
         public static string RemoveHtmlTags(string source)
         {
-            string output;
-
-            output = Regex.Replace(source, "<[^>]*>", string.Empty);
-
-            return output;
+            return Regex.Replace(source, "<[^>]*>", string.Empty);
         }
     }
 }
